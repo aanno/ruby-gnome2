@@ -39,36 +39,6 @@
 #  define RB_TYPE_P(object, type) (TYPE(object) == type)
 #endif
 
-#define RBX_VERSION "2.4.1"
-
-#ifdef RBX_VERSION
-
-#define CONST_ID_CACHE(result, str)			\
-    {							\
-	static ID rb_intern_id_cache;			\
-	if (!rb_intern_id_cache)			\
-	    rb_intern_id_cache = rb_intern2((str), (long)strlen(str)); \
-	result rb_intern_id_cache;			\
-    }
-#define CONST_ID(var, str) \
-    do CONST_ID_CACHE((var) =, (str)) while (0)
-#ifdef __GNUC__
-/* __builtin_constant_p and statement expression is available
- * since gcc-2.7.2.3 at least. */
-#define rb_intern(str) \
-    (__builtin_constant_p(str) ? \
-        __extension__ (CONST_ID_CACHE((ID), (str))) : \
-        rb_intern(str))
-#define rb_intern_const(str) \
-    (__builtin_constant_p(str) ? \
-     __extension__ (rb_intern2((str), (long)strlen(str))) : \
-     (rb_intern)(str))
-#else
-#define rb_intern_const(str) rb_intern2((str), (long)strlen(str))
-#endif
-
-#endif
-
 extern void Init_gobject_introspection(void);
 
 void rb_gi_argument_init             (void);

@@ -30,8 +30,8 @@ VALUE RG_TARGET_NAMESPACE;
 static VALUE
 rg_append_features(G_GNUC_UNUSED VALUE self, VALUE klass)
 {
-    if (!rb_obj_is_kind_of(klass, cInstantiatable))
-        rb_raise(rb_eTypeError, "Not a subclass of GLib::Instantiatable");
+    //if (!rb_obj_is_kind_of(klass, cInstantiatable))
+    //    rb_raise(rb_eTypeError, "Not a subclass of GLib::Instantiatable");
     return rb_call_super(1, &klass);
 }
 

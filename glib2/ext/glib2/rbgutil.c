@@ -181,3 +181,13 @@ Init_gutil(void)
     id_allocate = rb_intern("allocate");
     id_equal = rb_intern("==");
 }
+
+#ifdef RBX_VERSION
+int rb_thread_interrupted(VALUE thval) {
+  return Qfalse;
+}
+
+VALUE rb_thread_current(void) {
+  return Qtrue;
+}
+#endif

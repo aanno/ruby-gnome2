@@ -112,6 +112,16 @@ RUBY_GLIB2_VAR ID rbgutil_id_module_eval;
 extern void rbgutil_glibid_r2g_func(VALUE from, GValue* to);
 extern VALUE rbgutil_sym_g2r_func(const GValue *from);
 
+#define RBX_VERSION "2.4.1"
+
+#ifdef RBX_VERSION
+
+extern int rb_thread_interrupted(VALUE thval);
+
+VALUE rb_thread_current(void);
+
+#endif
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

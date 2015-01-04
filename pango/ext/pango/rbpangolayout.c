@@ -312,7 +312,7 @@ rg_log_attrs(VALUE self)
     ary = rb_ary_new();
 
     for (i = 0; i < n_attrs; i++) {
-        rb_ary_assoc(ary, PANGOLOGATTR2RVAL(&attrs[i]));
+        // rb_ary_assoc(ary, PANGOLOGATTR2RVAL(&attrs[i]));
     }
     g_free(attrs);
 
